@@ -5,7 +5,7 @@
             <div class="card-header bg-primary-subtle py-3 border-0">
                 <div class="d-flex justify-content-between align-items-center">
                     <span class="fs-5 fw-semibold">Pembentukan Matriks</span>
-                    <a href="{{ route('kriteria.create') }}" class="btn btn-success">+Matriks</a>
+                    {{-- <a href="{{ route('kriteria.create') }}" class="btn btn-success">+Matriks</a> --}}
                 </div>
             </div>
             <ul class="list-group list-group-flush">
@@ -31,7 +31,10 @@
                                     <td>{{ $matriks->kriteria_3 }}</td>
                                     <td>{{ $matriks->kriteria_4 }}</td>
                                     <td>{{ $matriks->kriteria_5 }}</td>
-                                    <td>
+                                    <td class="d-flex gap-2">
+                                        <a href="{{ route('matriks.edit', $matriks->id)}}" class="btn btn-warning">
+                                            <i class="fa-solid fa-pencil"></i>
+                                        </a>
                                         <form method="POST" action="{{ route('matriks.destroy', $matriks->id) }}">
                                             @csrf
                                             @method('DELETE')

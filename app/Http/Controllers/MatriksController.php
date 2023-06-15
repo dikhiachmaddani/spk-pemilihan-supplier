@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Matriks;
 use App\Http\Requests\StoreMatriksRequest;
 use App\Http\Requests\UpdateMatriksRequest;
+use App\Models\Alternatif;
 use App\Models\Normalisasi;
+use Illuminate\Http\Request;
 
 class MatriksController extends Controller
 {
@@ -45,17 +47,21 @@ class MatriksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Matriks $matriks)
+    public function edit($id)
     {
-        //
+        $matriks = Matriks::find($id);
+        $type = Alternatif::all();
+        return view('pages.matriks.edit', compact('matriks', 'type'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMatriksRequest $request, Matriks $matriks)
+    public function update($id, Request $request)
     {
-        //
+        $matriks = Matriks::find($id);
+        $matriks->update($request->all());
+        return redirect()->route('matriks.index');
     }
 
     /**
