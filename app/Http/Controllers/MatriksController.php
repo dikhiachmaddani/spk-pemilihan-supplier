@@ -67,8 +67,9 @@ class MatriksController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Matriks $matriks)
+    public function destroy($id)
     {
-        //
+        $matriks = Matriks::destroy($id);
+        return redirect()->route('matriks.index');
     }
 }
