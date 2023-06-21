@@ -19,6 +19,10 @@
                     </select>
                 </div>
                 <div class="form-group mt-3">
+                    <label>Kriteria</label>
+                    <input type="text" class="form-control" placeholder="masukkan kriteria" name="kriteria">
+                </div>
+                <div class="form-group mt-3">
                     <label>bobot</label>
                     <input type="text" class="form-control" placeholder="masukkan bobot" name="bobot">
                 </div>

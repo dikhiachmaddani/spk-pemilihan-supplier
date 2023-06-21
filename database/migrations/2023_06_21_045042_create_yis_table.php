@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alternatif_types', function (Blueprint $table) {
+        Schema::create('yis', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
+            $table->decimal('min', 11, 3);
+            $table->decimal('max', 11, 3);
+            $table->decimal('minmax', 11, 3);
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('alternatif_types');
+        Schema::dropIfExists('yis');
     }
 };

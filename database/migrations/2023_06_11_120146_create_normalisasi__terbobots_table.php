@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('normalisasi__terbobots', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
-            $table->float('kriteria_1');
-            $table->float('kriteria_2');
-            $table->float('kriteria_3');
-            $table->float('kriteria_4');
-            $table->float('kriteria_5');
+            $table->decimal('kriteria_1', 11, 3);
+            $table->decimal('kriteria_2', 11, 3);
+            $table->decimal('kriteria_3', 11, 3);
+            $table->decimal('kriteria_4', 11, 3);
+            $table->decimal('kriteria_5', 11, 3);
+            $table->decimal('kriteria_6', 11, 3);
             $table->timestamps();
         });
     }

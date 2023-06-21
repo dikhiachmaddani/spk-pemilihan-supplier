@@ -25,8 +25,7 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        $type = AlternatifType::all();
-        return view('pages.alternatif.create', compact('type'));
+        return view('pages.alternatif.create');
     }
 
     /**

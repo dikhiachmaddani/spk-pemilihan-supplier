@@ -23,6 +23,7 @@ class StoreKriteriaRequest extends FormRequest
     {
         return [
             'kode' => 'unique:kriterias|string|required',
+            'kriteria' => 'required',
             'bobot' => 'required|numeric|between:0,99.99',
             'tipe' => 'required|string'
         ];

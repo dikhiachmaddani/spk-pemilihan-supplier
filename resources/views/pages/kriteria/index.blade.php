@@ -15,6 +15,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Kode</th>
+                                <th scope="col">Kriteria</th>
                                 <th scope="col">Bobot</th>
                                 <th scope="col">Tipe</th>
                                 <th scope="col">Action</th>
@@ -25,6 +26,7 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $kriteria->kode }}</td>
+                                    <td>{{ $kriteria->kriteria }}</td>
                                     <td>{{ $kriteria->bobot }}</td>
                                     <td>{{ $kriteria->tipe }}</td>
                                     <td>

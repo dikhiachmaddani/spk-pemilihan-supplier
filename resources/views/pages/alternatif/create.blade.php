@@ -10,13 +10,8 @@
             <form method="POST" action="{{ route('alternatif.store') }}" class="my-4 bg-primary-subtle p-3 rounded">
                 @csrf
                 <div class="form-group">
-                    <label>type kriteria</label>
-                    <select class="form-select" name="kode">
-                        <option selected>pilih tipe alternatif</option>
-                        @foreach ($type as $type_alternatif)
-                            <option value="{{ $type_alternatif->kode }}">{{ $type_alternatif->kode }}</option>
-                        @endforeach
-                    </select>
+                    <label>kode alternatif</label>
+                    <input type="text" class="form-control" placeholder="masukkan kode alternatif" name="kode">
                 </div>
                 <div class="form-group mt-3">
                     <label>alternatif</label>

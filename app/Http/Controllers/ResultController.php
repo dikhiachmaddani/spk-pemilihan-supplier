@@ -11,6 +11,7 @@ use App\Models\Normalisasi;
 use App\Models\Normalisasi2;
 use App\Models\Normalisasi3;
 use App\Models\Normalisasi_Terbobot;
+use App\Models\Yi;
 
 class ResultController extends Controller
 {
@@ -19,14 +20,12 @@ class ResultController extends Controller
      */
     public function index()
     {
-        $normalisasi = Normalisasi::orderBy('kode', 'ASC')->get();
-        $normalisasi_step2 = Normalisasi2::orderBy('kode', 'ASC')->get();
-        $normalisasi_step3 = Normalisasi3::orderBy('kode', 'ASC')->get();
-        $normalisasi_terbobot = Normalisasi_Terbobot::orderBy('kode', 'ASC')->get();
-        $matriks_apb = MatriksAPB::orderBy('kode', 'ASC')->get();
-        $matriks_ja = MatriksJA::orderBy('kode', 'ASC')->get();
+        $normalisasi = Normalisasi::orderBy('id', 'ASC')->get();
+        $normalisasi_step2 = Normalisasi2::orderBy('id', 'ASC')->get();
+        $normalisasi_terbobot = Normalisasi_Terbobot::orderBy('id', 'ASC')->get();
+        $yi = Yi::orderBy('id', 'ASC')->get();
         $result = Result::orderBy('preference_value', 'DESC')->get();
-        return view('pages.result.index', compact('result', 'normalisasi', 'normalisasi_step2','normalisasi_step3','normalisasi_terbobot','matriks_apb','matriks_ja'));
+        return view('pages.result.index', compact('result', 'normalisasi', 'normalisasi_step2','normalisasi_terbobot', 'yi'));
     }
 
     /**

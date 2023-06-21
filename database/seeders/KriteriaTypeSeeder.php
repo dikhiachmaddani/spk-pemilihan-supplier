@@ -13,6 +13,25 @@ class KriteriaTypeSeeder extends Seeder
      */
     public function run(): void
     {
-
+        KriteriaType::insert([
+            [
+                'kode' => 'C1',
+            ],
+            [
+                'kode' => 'C2',
+            ],
+            [
+                'kode' => 'C3',
+            ],
+            [
+                'kode' => 'C4',
+            ],
+            [
+                'kode' => 'C5',
+            ],
+            [
+                'kode' => 'C6',
+            ],
+        ]);
     }
 }

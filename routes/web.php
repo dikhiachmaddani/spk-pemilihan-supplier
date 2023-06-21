@@ -33,7 +33,7 @@ Route::post('/normalisasikan', [NormalisasiController::class, 'normalisasi'])->n
 Route::post('/normalisasikan-2', [NormalisasiController::class, 'normalisasi2'])->name('normalisasikan.step2');
 Route::post('/normalisasikan-3', [NormalisasiController::class, 'normalisasi3'])->name('normalisasikan.step3');
 Route::post('/normalisasikan-terbobot', [NormalisasiController::class, 'normalisasiTerbobot'])->name('normalisasikan.terbobot');
-Route::post('/matriks-apb', [NormalisasiController::class, 'matriksApb'])->name('matriks.apb');
-Route::post('/matriks-ja', [NormalisasiController::class, 'matriksJa'])->name('matriks.ja');
+Route::post('/yimax', [NormalisasiController::class, 'yiMax'])->name('yimax');
 Route::post('/matriks-result', [NormalisasiController::class, 'result'])->name('matriks.result');
+Route::post('/result/destroy', [NormalisasiController::class, 'destroy'])->name('destroy');
 Route::resource('/result', ResultController::class);

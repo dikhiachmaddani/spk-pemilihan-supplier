@@ -9,4 +9,8 @@ class Normalisasi_Terbobot extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function getTableColumns() {
+        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
 }

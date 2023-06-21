@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode');
             $table->string('supplier');
-            $table->float('preference_value');
+            $table->decimal('preference_value', 11, 3);
             $table->timestamps();
         });
     }

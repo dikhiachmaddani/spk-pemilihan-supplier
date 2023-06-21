@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label>type kriteria</label>
                     <select class="form-select" name="kode">
-                        <option selected>pilih tipe kriteria</option>
+                        <option selected>pilih tipe alternatif</option>
                         @foreach ($type as $type_alternatif)
                             <option value="{{ $type_alternatif->kode }}" @if ($matriks->kode == $type_alternatif->kode) selected @endif>
                                 {{ $type_alternatif->kode }}</option>

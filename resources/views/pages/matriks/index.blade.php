@@ -19,6 +19,7 @@
                                 <th scope="col">kriteria 3</th>
                                 <th scope="col">kriteria 4</th>
                                 <th scope="col">kriteria 5</th>
+                                <th scope="col">kriteria 6</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -31,6 +32,7 @@
                                     <td>{{ $matriks->kriteria_3 }}</td>
                                     <td>{{ $matriks->kriteria_4 }}</td>
                                     <td>{{ $matriks->kriteria_5 }}</td>
+                                    <td>{{ $matriks->kriteria_6 }}</td>
                                     <td class="d-flex gap-2">
                                         <a href="{{ route('matriks.edit', $matriks->id)}}" class="btn btn-warning">
                                             <i class="fa-solid fa-pencil"></i>

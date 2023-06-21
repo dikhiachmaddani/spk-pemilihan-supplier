@@ -25,15 +25,16 @@ class MatriksController extends Controller
      */
     public function create()
     {
-        return view('pages.matriks.create');
+        $type = Alternatif::all();
+        return view('pages.matriks.create', compact('type'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMatriksRequest $request)
+    public function store(Request $request)
     {
-        //
+
     }
 
     /**
