@@ -25,7 +25,10 @@
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $alternatif->kode }}</td>
                                 <td>{{ $alternatif->alternatif }}</td>
-                                <td>
+                                <td class="d-flex gap-2">
+                                    <a href="{{ route("alternatif.edit",$alternatif->id)}}" class="btn btn-warning">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </a>
                                     <form method="POST" action="{{ route('alternatif.destroy', $alternatif->id) }}">
                                         @csrf
                                         @method('DELETE')

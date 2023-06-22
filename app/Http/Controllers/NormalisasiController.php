@@ -85,42 +85,88 @@ class NormalisasiController extends Controller
         $normalisasi_terbobot = $defineModel->all();
         $category = Kriteria::orderBy('kode', 'ASC')->get();
         $getNt = $defineModel->getTableColumns();
+
+        $c = [];
+
         for ($i = 0; $i < count($category); $i++) {
-            ${"c" . ($i + 1)} = (object)[
+            $c[$i] = (object) [
                 'kriteria' => 'kriteria_' . ($i + 1),
                 'tipe' => $category[$i]->tipe
             ];
         }
-        if ($c1->kriteria == $getNt[2] && $c1->tipe == 'benefit') {
-            for ($min = 0; $min < count($normalisasi_terbobot); $min++) {
-                ${"min$min"} = $normalisasi_terbobot[$min]->kriteria_1 +
+
+        $max_values = [];
+        $min_values = [];
+        $condition_max = true;
+        $condition_min = true;
+
+        for ($i = 0; $i < count($c); $i++) {
+            if ($c[$i]->kriteria !== $getNt[$i + 2] || $c[$i]->tipe !== 'benefit') {
+                $condition_max = false;
+                break;
+            }
+        }
+
+        for ($i = 0; $i < count($c); $i++) {
+            if ($c[$i]->kriteria !== $getNt[$i + 2] || $c[$i]->tipe !== 'cost') {
+                $condition_min = false;
+                break;
+            }
+        }
+
+        for ($max = 0; $max < count($normalisasi_terbobot); $max++) {
+            $max_value = 0;
+
+            if ($condition_max) {
+                $max_value = $normalisasi_terbobot[$max]->kriteria_1 +
+                    $normalisasi_terbobot[$max]->kriteria_2 +
+                    $normalisasi_terbobot[$max]->kriteria_3 +
+                    $normalisasi_terbobot[$max]->kriteria_4 +
+                    $normalisasi_terbobot[$max]->kriteria_5 +
+                    $normalisasi_terbobot[$max]->kriteria_6;
+            } else {
+                for ($i = 0; $i < count($c); $i++) {
+                    if ($c[$i]->kriteria !== $getNt[$i + 2] || $c[$i]->tipe !== 'benefit') {
+                        continue;
+                    }
+                    $max_value += $normalisasi_terbobot[$max]->{"kriteria_" . ($i + 1)};
+                }
+            }
+
+            $max_values[] = $max_value;
+        }
+
+        for ($min = 0; $min < count($normalisasi_terbobot); $min++) {
+            $min_value = 0;
+
+            if ($condition_min) {
+                $min_value = $normalisasi_terbobot[$min]->kriteria_1 +
                     $normalisasi_terbobot[$min]->kriteria_2 +
                     $normalisasi_terbobot[$min]->kriteria_3 +
                     $normalisasi_terbobot[$min]->kriteria_4 +
                     $normalisasi_terbobot[$min]->kriteria_5 +
                     $normalisasi_terbobot[$min]->kriteria_6;
+            } else {
+                for ($i = 0; $i < count($c); $i++) {
+                    if ($c[$i]->kriteria !== $getNt[$i + 2] || $c[$i]->tipe !== 'cost') {
+                        continue;
+                    }
+                    $min_value += $normalisasi_terbobot[$min]->{"kriteria_" . ($i + 1)};
+                }
             }
+
+            $min_values[] = $min_value;
         }
-        // for ($min = 0; $min < count($normalisasi_terbobot); $min++) {
-        //     ${"min$min"} = $normalisasi_terbobot[$min]->kriteria_1 +
-        //         $normalisasi_terbobot[$min]->kriteria_2 +
-        //         $normalisasi_terbobot[$min]->kriteria_6;
-        // }
 
-        // for ($max = 0; $max < count($normalisasi_terbobot); $max++) {
-        //     ${"max$max"} = $normalisasi_terbobot[$max]->kriteria_3 +
-        //         $normalisasi_terbobot[$max]->kriteria_4 +
-        //         $normalisasi_terbobot[$max]->kriteria_5;
-        // }
+        foreach ($normalisasi_terbobot as $i => $item) {
+            Yi::create([
+                'kode' => $item->kode,
+                'min' => $min_values[$i],
+                'max' =>  $max_values[$i],
+                'minmax' => $max_values[$i] - $min_values[$i],
+            ]);
+        }
 
-        // for ($i = 0; $i < count($normalisasi_terbobot); $i++) {
-        //     Yi::create([
-        //         'kode' => $normalisasi_terbobot[$i]->kode,
-        //         'min' => ${"min$i"},
-        //         'max' => ${"max$i"},
-        //         'minmax' => ${"max$i"} - ${"min$i"},
-        //     ]);
-        // }
         return redirect()->route('result.index');
     }
 

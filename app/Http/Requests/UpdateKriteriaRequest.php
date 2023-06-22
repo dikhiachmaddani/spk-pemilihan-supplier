@@ -11,7 +11,7 @@ class UpdateKriteriaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateKriteriaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'kode' => 'string|required',
+            'kriteria' => 'required',
+            'bobot' => 'required|numeric|between:0,99.99',
+            'tipe' => 'required|string'
         ];
     }
 }

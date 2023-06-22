@@ -25,7 +25,7 @@ class MatriksController extends Controller
      */
     public function create()
     {
-        $type = Alternatif::all();
+        $type = Matriks::all();
         return view('pages.matriks.create', compact('type'));
     }
 
@@ -34,7 +34,8 @@ class MatriksController extends Controller
      */
     public function store(Request $request)
     {
-
+        Matriks::create($request->all());
+        return redirect()->route('matriks.index');
     }
 
     /**
@@ -51,8 +52,7 @@ class MatriksController extends Controller
     public function edit($id)
     {
         $matriks = Matriks::find($id);
-        $type = Alternatif::all();
-        return view('pages.matriks.edit', compact('matriks', 'type'));
+        return view('pages.matriks.edit', compact('matriks'));
     }
 
     /**

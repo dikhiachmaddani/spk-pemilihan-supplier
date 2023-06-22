@@ -4,31 +4,38 @@
         <div class="card mt-5 border-0">
             <div class="card-header bg-primary-subtle py-3 border-0">
                 <div class="d-flex justify-content-between align-items-center">
-                    <span class="fs-5 fw-semibold">Create Kriteria</span>
+                    <span class="fs-5 fw-semibold">Create Matriks</span>
                 </div>
             </div>
-            <form method="POST" action="{{route('kriteria.store')}}" class="my-4 bg-primary-subtle p-3 rounded">
+            <form method="POST" action="{{ route('matriks.store') }}" class="my-4 bg-primary-subtle p-3 rounded">
                 @csrf
                 <div class="form-group">
-                    <label>type kriteria</label>
-                    <select class="form-select" name="kode">
-                        <option selected>pilih tipe kriteria</option>
-                        @foreach ($type as $type_kriteria)
-                            <option value="{{ $type_kriteria->kode }}">{{ $type_kriteria->kode }}</option>
-                        @endforeach
-                    </select>
+                    <label>kode alternatif</label>
+                    <input type="text" class="form-control" placeholder="masukkan kode" name="kode">
                 </div>
                 <div class="form-group mt-3">
-                    <label>bobot</label>
-                    <input type="text" class="form-control" placeholder="masukkan bobot" name="bobot">
+                    <label>kriteria 1</label>
+                    <input type="text" class="form-control" placeholder="masukkan kriteria 1" name="kriteria_1">
                 </div>
                 <div class="form-group mt-3">
-                    <label>Cost / benefit</label>
-                    <select class="form-select" name="tipe">
-                        <option selected>pilih tipe kriteria</option>
-                        <option value="benefit">benefit</option>
-                        <option value="cost">cost</option>
-                    </select>
+                    <label>kriteria 2</label>
+                    <input type="text" class="form-control" placeholder="masukkan kriteria 2" name="kriteria_2">
+                </div>
+                <div class="form-group mt-3">
+                    <label>kriteria 3</label>
+                    <input type="text" class="form-control" placeholder="masukkan kriteria 3" name="kriteria_3">
+                </div>
+                <div class="form-group mt-3">
+                    <label>kriteria 4</label>
+                    <input type="text" class="form-control" placeholder="masukkan kriteria 4" name="kriteria_4">
+                </div>
+                <div class="form-group mt-3">
+                    <label>kriteria 5</label>
+                    <input type="text" class="form-control" placeholder="masukkan kriteria 5" name="kriteria_5">
+                </div>
+                <div class="form-group mt-3">
+                    <label>kriteria 6</label>
+                    <input type="text" class="form-control" placeholder="masukkan kriteria 6" name="kriteria_6">
                 </div>
                 <button type="submit" class="btn btn-success mt-3">Submit</button>
             </form>

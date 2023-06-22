@@ -11,7 +11,7 @@ class UpdateAlternatifRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateAlternatifRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'kode' => 'string|required',
+            'alternatif' => 'required|string'
         ];
     }
 }

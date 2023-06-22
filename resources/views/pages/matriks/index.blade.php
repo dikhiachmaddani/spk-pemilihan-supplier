@@ -5,7 +5,7 @@
             <div class="card-header bg-primary-subtle py-3 border-0">
                 <div class="d-flex justify-content-between align-items-center">
                     <span class="fs-5 fw-semibold">Pembentukan Matriks</span>
-                    {{-- <a href="{{ route('kriteria.create') }}" class="btn btn-success">+Matriks</a> --}}
+                    <a href="{{ route('matriks.create') }}" class="btn btn-success">+Matriks</a>
                 </div>
             </div>
             <ul class="list-group list-group-flush">

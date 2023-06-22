@@ -29,7 +29,10 @@
                                     <td>{{ $kriteria->kriteria }}</td>
                                     <td>{{ $kriteria->bobot }}</td>
                                     <td>{{ $kriteria->tipe }}</td>
-                                    <td>
+                                    <td class="d-flex gap-2">
+                                        <a href="{{ route("kriteria.edit",$kriteria->id)}}" class="btn btn-warning">
+                                            <i class="fa-solid fa-pencil"></i>
+                                        </a>
                                         <form method="POST" action="{{ route('kriteria.destroy', $kriteria->id) }}">
                                             @csrf
                                             @method('DELETE')

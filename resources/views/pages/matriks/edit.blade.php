@@ -12,14 +12,9 @@
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label>type kriteria</label>
-                    <select class="form-select" name="kode">
-                        <option selected>pilih tipe alternatif</option>
-                        @foreach ($type as $type_alternatif)
-                            <option value="{{ $type_alternatif->kode }}" @if ($matriks->kode == $type_alternatif->kode) selected @endif>
-                                {{ $type_alternatif->kode }}</option>
-                        @endforeach
-                    </select>
+                    <label>kode alternatif</label>
+                    <input type="text" value="{{ $matriks->kode }}" class="form-control"
+                        placeholder="masukkan kode" name="kode">
                 </div>
                 <div class="form-group mt-3">
                     <label>kriteria 1</label>
@@ -46,9 +41,13 @@
                     <input type="text" value="{{ $matriks->kriteria_5 }}" class="form-control"
                         placeholder="masukkan kriteria 5" name="kriteria_5">
                 </div>
+                <div class="form-group mt-3">
+                    <label>kriteria 6</label>
+                    <input type="text" value="{{ $matriks->kriteria_6 }}" class="form-control"
+                        placeholder="masukkan kriteria 6" name="kriteria_6">
+                </div>
                 <button type="submit" class="btn btn-success mt-3">Submit</button>
             </form>
         </div>
-
     </div>
 @endsection

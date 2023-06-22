@@ -16,7 +16,7 @@ class AlternatifController extends Controller
      */
     public function index()
     {
-        $data = Alternatif::orderBy('kode', 'ASC')->get();
+        $data = Alternatif::orderBy('id', 'ASC')->get();
         return view('pages.alternatif.index', compact('data'));
     }
 
@@ -56,17 +56,20 @@ class AlternatifController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Alternatif $alternatif)
+    public function edit($id)
     {
-        //
+        $data = Alternatif::find($id);
+        return view('pages.alternatif.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAlternatifRequest $request, Alternatif $alternatif)
+    public function update(UpdateAlternatifRequest $request, $id)
     {
-        //
+        $alternatif = Alternatif::find($id);
+        $alternatif->update($request->validated());
+        return redirect()->route('alternatif.index');
     }
 
     /**
